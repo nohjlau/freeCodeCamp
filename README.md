@@ -1,5 +1,6 @@
 ##### Table of Contents
 * Responsive Web Design Certification
+
 [Basic HTML](#basic-html)  
 [Basic CSS](#basic-css)  
 
@@ -7,7 +8,9 @@
 freeCodeCamp teaches you the fundamentals and beyond of web development. I created this after completing each challenge to create a sort of cheetsheet to reference topics that I learned, but may not have rememebred the exact syntax for.
 
 # Responsive Web Design Certification
+
 <a name="basic-html"/>
+
 ## Basic HTML
 01. Say Hello to HTML Elements
 ```<h1>Hello, World!</h1>```
@@ -71,6 +74,8 @@ freeCodeCamp teaches you the fundamentals and beyond of web development. I creat
 ---
 27. Define the Head and Body of an HTML Document
 ---
+
 <a name="basic-css"/>
+
 ## Basic CSS
 ---
