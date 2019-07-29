@@ -1,0 +1,58 @@
+# Responsive Web Design Certification
+## Basic HTML
+01. Say Hello to HTML Elements
+---
+02. Heading with the H2 Element
+---
+03. Inform with the Paragraph Element
+---
+04. Fill in the Blank with Placeholder Text
+---
+05. Uncomment HTML
+---
+06. Comment out HTML
+---
+07. Delete HTML Elements
+---
+08. Introduction to HTML5 Elements
+---
+09. Adding Images to Your Websites
+---
+10. Link to External Pages with Anchor Elements
+---
+11. Link to Internal Sections of a Page with Anchor Elements
+---
+12. Next an Anchor Element within a Paragraph
+---
+13. Make Dead Links Using the Hash Symbol
+---
+14. Turn an Image into a Link
+---
+15. Create a Bulleted Unordered List
+---
+16. Create an Ordered List
+---
+17. Create a Text Field
+---
+18. Add Placeholder Text to a Text Field
+---
+19. Create a Form Element
+---
+20. Add a Submit Button to a Form
+---
+21. Use HTML5 to Require a Field
+---
+22. Create a Set of Radio Buttons
+---
+23. Create a Set of Checkboxes
+---
+24. Check Radio Buttons and Checkboxes by Default
+---
+25. Nest Many Elements within a Single div Element
+---
+26. Declare thet Doctype of an HTML Document
+---
+27. Define the Head and Body of an HTML Document
+---
+## Basic CSS
+---
