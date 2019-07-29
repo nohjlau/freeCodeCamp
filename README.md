@@ -1,10 +1,21 @@
+# Introduction
+freeCodeCamp teaches you the fundamentals and beyond of web development. I created this after completing each challenge to create a sort of cheetsheet to reference topics that I learned, but may not have rememebred the exact syntax for.
+
 # Responsive Web Design Certification
 ## Basic HTML
 01. Say Hello to HTML Elements
+```<h1>Hello, World!</h1>```
 ---
 02. Heading with the H2 Element
+```
+<h1>Hello, World!</h1>
+<h2>CatPhotoApp</h2>
+```
 ---
 03. Inform with the Paragraph Element
+```
+<p>This is a paragraph</>
+```
 ---
 04. Fill in the Blank with Placeholder Text
 ---
