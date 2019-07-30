@@ -33,7 +33,7 @@
 
 <a name="rwd-html-comment"/>
 
-### Comment HTML
+#### Comment HTML
 ```
 <!-- COMMENTED OUT TEXT -->
 ```
@@ -43,7 +43,7 @@
 
 <a name="rwd-html-images"/>
 
-### Adding Images
+#### Adding Images
 ```
 <img src="image.url" alt="descriptive text">
 ```
@@ -53,7 +53,7 @@
 
 <a name="rwd-html-unordered-list"/>
 
-### Create a Bulleted List
+#### Create a Bulleted List
 ```
 <ul>
     <li></li>
@@ -67,7 +67,7 @@
 
 <a name="rwd-html-ordered-list"/>
 
-### Create an Ordered List
+#### Create an Ordered List
 ```
 <ol>
     <li></li>
@@ -81,7 +81,7 @@
 
 <a name="rwd-html-text-field"/>
 
-### Create a Text Field
+#### Create a Text Field
 ```
 <input name="text">
 ```
@@ -91,7 +91,7 @@
 
 <a name="rwd-html-text-field-placeholder"/>
 
-### Add Placeholder Text to a Text Field
+#### Add Placeholder Text to a Text Field
 ```
 <input name="text" placeholder="placeholder"/>
 ```
@@ -101,7 +101,7 @@
 
 <a name="rwd-html-form"/>
 
-### Create a Form
+#### Create a Form
 ```
 <form action="/URL">
 ...
@@ -113,7 +113,7 @@
 
 <a name="rwd-html-submit"/>
 
-### Add a Submit Button to a Form
+#### Add a Submit Button to a Form
 ```
 <button type="submit">Submit</button>
 ```
@@ -123,7 +123,7 @@
 
 <a name="rwd-html-required"/>
 
-### Use HTML5 to Require a Field
+#### Use HTML5 to Require a Field
 ```
 <input type="text" required>
 ```
@@ -133,7 +133,7 @@
 
 <a name="rwd-html-radio"/>
 
-### Create Radio Buttons
+#### Create Radio Buttons
 ```
 <label for="description">
     <input type="radio" name="descriptor">description
@@ -148,7 +148,7 @@
 
 <a name="rwd-html-checkboxes"/>
 
-### Create Checkboxes
+#### Create Checkboxes
 ```
 <label for="description">
     <input type="checkbox" name="group">description
@@ -161,7 +161,7 @@
 
 <a name="rwd-html-radiocheck-default"/>
 
-### Check Radio Buttons and Checkboxes by Default
+#### Check Radio Buttons and Checkboxes by Default
 ```
 <input type="radio" name="test" checked>
 <input type="checkbox" name="test" checked>
@@ -170,17 +170,19 @@
 
 ---
 
+<a name="basic-css"/>
+
 ## Basic CSS
----
 
 <a name="rwd-css-circ"/>
 
-### Make a Circular Image with a border-radius
+#### Make a Circular Image with a border-radius
 
 ```
 .border-class {
     border-radius: 50%;
 }
 ```
+[Back to Top](#home)
 
 ---
