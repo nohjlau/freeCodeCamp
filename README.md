@@ -21,8 +21,17 @@
 * [Create CheckBoxes](#rwd-html-checkboxes)
 
 [Basic CSS](#basic-css) 
-
-* [Make a Circular Image with a border-radius](#rwd-css-circ)
+* [Change the Color of Text](#rwd-css-color)
+* [Use CSS Selectors to Style Elements](#rwd-css-style-selectors)
+* [Use CSS Class to Style Elements](#rwd-css-style-class)
+* [Change the Font Size of an Element](#rwd-css-font-size)
+* [Set the Font Family of an Element](#rwd-css-font-family)
+* [Import a Google Font](#rwd-css-import-google)
+* [Specify How Fonts Should Degrade](#rwd-css-font-degrade)
+* [Size Your Images](#rwd-css-size-images)
+* [Add Borders Around Your Elements](#rwd-css-add-border)
+* [Add Rounded Corners with border-radius](#rwd-css-rounded-corner)
+* [Make a Circular Image with a border-radius](#rwd-css-circular-image)
 
 
 # Responsive Web Design Certification
@@ -174,7 +183,129 @@
 
 ## Basic CSS
 
-<a name="rwd-css-circ"/>
+<a name="rwd-css-color"/>
+
+#### Change the Color of Text
+in-line:
+```
+<h1 style="color: blue">...</h2>
+```
+style-block:
+```
+h1 {
+    color: red;
+}
+```
+[Back to Top](#home)
+
+---
+
+<a name="rwd-css-style-selectors"/>
+
+#### Use CSS Selectors to Style Elements
+```
+h2 { 
+    color: red;
+}
+```
+[Back to Top](#home)
+
+---
+<a name="rwd-css-style-class"/>
+
+#### Use CSS Class to Style Elements
+```
+.blue-text {
+    color:blue;
+}
+<div class="blue-text">...</div>
+<h2 class="blue-text">...</h2>
+```
+[Back to Top](#home)
+
+---
+<a name="rwd-css-font-size"/>
+
+#### Change the Font Size of an Element
+```
+h1 {
+    font-size: 30px;
+}
+```
+[Back to Top](#home)
+
+---
+<a name="rwd-css-font-family"/>
+
+#### Set the Font Family of an Element
+```
+h1 { 
+    font-family: sans-serif;
+}
+```
+[Back to Top](#home)
+
+---
+<a name="rwd-css-import-google"/>
+
+#### Import a Google Font
+```
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+
+h1 {
+    font-family: Lobster;
+}
+```
+[Back to Top](#home)
+
+---
+<a name="rwd-css-font-degrade"/>
+
+#### Specify How Fonts Should Degrade
+```
+h1 {
+    font-family: Lobster, monospace;
+}
+```
+[Back to Top](#home)
+
+---
+<a name="rwd-css-size-images"/>
+
+#### Size Your Images
+```
+.thumbnail {
+    width: 50px;
+}
+```
+[Back to Top](#home)
+
+---
+<a name="rwd-css-add-border"/>
+
+#### Add Borders Around Your Elements
+```
+.thin-red-border {
+    border-color: red;
+    border-width: 5px;
+    border-style: solid;
+}
+```
+[Back to Top](#home)
+
+---
+<a name="rwd-css-rounded-corner"/>
+
+#### Add Rounded Corners with border-radius
+```
+.rounded-border {
+    border-radius: 10px;
+}
+```
+[Back to Top](#home)
+
+---
+<a name="rwd-css-circular-image"/>
 
 #### Make a Circular Image with a border-radius
 
