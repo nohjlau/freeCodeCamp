@@ -32,6 +32,14 @@
 * [Add Borders Around Your Elements](#rwd-css-add-border)
 * [Add Rounded Corners with border-radius](#rwd-css-rounded-corner)
 * [Make a Circular Image with a border-radius](#rwd-css-circular-image)
+*
+* [Use RBH Values to Color Elements](#rwd-css-rgb)
+* [Use CSS Variables to change several elements at once](#rwd-css-variables)
+* [Use CSS Variables to change several elements at once](#rwd-css-variables)
+* [Attach a Fallback value to a CSS Variable](#rwd-css-fallback)
+* [Improve Compatability with Browser Fallbacks](#rwd-css-compatability)
+* [Change a variable for a specific area](#rwd-css-specific)
+* [Use a media query to change a variable](#rwd-css-media-query)
 
 
 # Responsive Web Design Certification
@@ -312,6 +320,114 @@ h1 {
 ```
 .border-class {
     border-radius: 50%;
+}
+```
+[Back to Top](#home)
+
+---
+
+<a name="rwd-css-rgb"/>
+
+#### Use RGB Values to Color Elements
+```
+// 255 = white, 0 = black
+// rgb(0, 0, 255)     = BLUE
+// rgb(255, 0, 0)     = RED
+// rgb(218, 112, 214) = ORCHID
+// rgb(160, 82, 45)   = SIENNA
+
+body {
+    background-color: rgb(0, 0, 0);
+}
+```
+[Back to Top](#home)
+
+---
+
+<a name="rwd-css-variables"/>
+
+#### Use CSS Variables to change several elements at once
+```
+.test {
+    --variable-color: gray;
+    --variable-hue: blue;
+}
+
+.test-use {
+    background: var(--variable-color);
+}
+
+.test-use2{
+    background: var(--variable-color);
+}
+```
+[Back to Top](#home)
+
+---
+
+<a name="rwd-css-fallback"/>
+
+#### Attach a Fallback value to a CSS Variable
+```
+.test-use {
+    background: var(--variable-color, pink);
+}
+```
+[Back to Top](#home)
+
+---
+
+<a name="rwd-css-compatability"/>
+
+#### Improve Compatability with Browser Fallbacks
+```
+:root {
+    --red-color: red;
+}
+
+.red-box {
+    background: red;
+    background: var(--red-color);
+}
+```
+[Back to Top](#home)
+
+---
+
+<a name="rwd-css-specific"/>
+
+#### Change a variable for a specific area
+```
+:root {
+    --background-club: red;
+}
+
+.blue-club {
+    --background-club: blue;
+}
+```
+[Back to Top](#home)
+
+---
+
+<a name="rwd-css-media-query"/>
+
+#### Use a media query to change a variable
+```
+:root {
+    --penguin-size: 300px;
+    --penguin-skin: gray;
+    --penguin-belly: white;
+    --penguin-beak: orange;
+}
+
+@media (max-width: 350px) {
+    :root {
+        /* add code below */
+        --penguin-size: 200px;
+        --penguin-skin: black;
+        /* add code above */
+    }
 }
 ```
 [Back to Top](#home)
