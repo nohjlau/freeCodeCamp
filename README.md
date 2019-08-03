@@ -66,8 +66,17 @@
 * [Learn about Tertiary Colors](#rwd-avd-tertiary-colors)
 * [Adjust the Hue/Saturation/Tone of a Color](#rwd-avd-hue)
 * [Create a Gradual CSS Linear Gradient](#rwd-avd-linear-gradient)
-
-
+* [Create Texture by Adding a Web Image as a Background Image](#rwd-avd-web-image)
+* [Use the CSS Transform scale Property](#rwd-avd-transform-scale)
+* [Use the CSS Transform Property skewX to Skew an Element](#rwd-avd-transform-skew)
+* [Creating a Graphic Using CSS](#rwd-avd-graphic)
+* [Creating a More Complex Shape](#rwd-avd-complex-graphic)
+* [Learn How the CSS @keyframes and animation Properties work](#rwd-avd-keyframes)
+* [Modify Fill Mode of an Animation](#rwd-avd-fill)
+* [Create Movement Using CSS Animation](#rwd-avd-animation)
+* [Create Visual Direction by Fading an Element from Left to Right](#rwd-avd-fading])
+* [Animate Elements Continually Using an Infinite Animation Count](#rwd-avd-infinite)
+* [Change Animation Timing with Keywords](#rwd-avd-keywords)
 # Responsive Web Design Certification
 
 <a name="basic-html"/>
@@ -749,3 +758,277 @@ Colors can be any usuable form including ```#hex```, ```rgb()``` and ```hsl```
 ```
 background: linear-gradient(90deg, red, blue, ...)
 ```
+```repeating-linear-gradient()``` function is very similiar to ```linear-gradient()``` with the major difference that is repeats the specified gradient pattern.
+For this example, it helps to think about the color stops as pairs where every two colors blend together.
+```
+0px [yellow -- blend -- blue] 40px [green -- blend -- red] 80px
+background: repeating-linear-gradient(
+    45deg,
+    yellow 0px,
+    yellow 40px,
+    black 40px,
+    black 80px
+);
+```
+[Back to Top](#home)
+
+---
+
+<a name="rwd-avd-web-image"/>
+
+#### Create a Texture by Adding a Web Image as a Background Image
+```
+body {
+    background: url(https://i.imgur.com/MJAkxbh.png);
+}
+```
+[Back to Top](#home)
+
+---
+
+<a name="rwd-avd-transform-scale"/>
+
+#### Use the CSS Transform scale Property
+
+The first example doubles the size of all paragraph elements on the page. This can be used on any element as seen by the second div example:
+```
+p { 
+    transform: scale(2);
+}
+
+div:hover {
+    transform: scale(1.1);
+}
+```
+[Back to Top](#home)
+
+---
+
+<a name="rwd-avd-transform-skew"/>
+
+#### Use the CSS Transform Property skewX to Skew an Element
+```transform``` property is ```skewX()```, which skews the selected elements along its X (horizontal) axis by a given degree.
+```
+p {
+    transform: skewX(-32deg);
+    transform: skewY(10deg);
+}
+```
+[Back to Top](#home)
+
+---
+
+<a name="rwd-avd-graphic"/>
+
+#### Create a Graphic Using CSS
+This is an example creating a moon crescent shape using ```border-radius``` to create a circular image and then the ```box-shadow``` offset to create the crescent shape.
+```
+{
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 25px 10px 0px 0px blue; 
+}
+```
+[Back to Top](#home)
+
+---
+
+<a name="rwd-avd-complex-graphic"/>
+
+#### Creating a More Complex Shape
+There are the ```::before``` and the ```::after``` pseudo-elements. These elements are used to add something before or after a selected element. 
+
+For the ::before and ::after pseudo-elements to function properly, they must have a defined content property. This property is usually used to add things like a photo or text to the selected element. When the ::before and ::after pseudo-elements are used to make shapes, the content property is still required, but it's set to an empty string.
+
+```
+.heart {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: pink;
+  height: 50px;
+  width: 50px;
+  transform: rotate(-45deg);
+}
+
+.heart::after {
+  background-color: pink;
+  content: "";
+  border-radius: 50%;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 0px;
+  left: 25px;
+}
+.heart::before {
+  content: "";
+  background-color: pink;
+  border-radius: 50%;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: -25px;
+  left: 0px;
+}
+```
+[Back to Top](#home)
+
+---
+
+<a name="rwd-avd-keyframes"/>
+
+#### Learn How the CSS @keyframes and animation Properties Work
+There are two parts to an animation, ```@keyframes``` and animation properties. @keyframes controls what happens and animation properties control how the animation should behave. There are eight animation properties in total. This exercise will only cover the two most important ones. 
+
+```animation-name``` sets the name of the animation, which is later used by ```@keyframes``` to tell CSS which rules go with which animations.
+
+```animation-duration``` sets the length of time for the animation.
+
+```@keyframes``` range from 0% (start) to 100% (end).
+
+```
+  #rect {
+    animation-name: rainbow;
+    animation-duration: 4s;
+  }
+  
+  @keyframes rainbow {
+    0% {
+      background-color: blue;
+    }
+
+    50% {
+      background-color: green;
+    }
+
+    100% {
+      background-color: yellow;
+    }
+  }
+    
+```
+CSS Animations can also be applied to buttons and other things including pseudo classes
+```
+  button:hover {
+    animation-name: background-col2or;
+    animation-duration: 500ms;
+  }
+  
+  @keyframes background-col2or{
+    100% {
+      background-color: #4791d0;
+    }
+  }
+```
+[Back to Top](#home)
+
+---
+
+<a name="rwd-avd-fill"/>
+
+#### Modify Fill Mode of an Animation
+The ```animation-fill-mode``` specifies the style applied to the element when the animation ends. Setting it to ```forwards``` sets it so the button stays highlighted after the animation ends.
+```
+animation-fill-mode: forwards;
+```
+[Back to Top](#home)
+
+---
+
+<a name="rwd-avd-animation"/>
+
+#### Create Movement Using CSS Animation
+```
+@keyframes rainbow {
+  0% {
+    background-color: blue;
+    top: 0px;
+    left: 0px;
+  }
+  50% {
+    background-color: green;
+    top: 50px;
+    left: 25px;
+  }
+  100% {
+    background-color: yellow;
+    top: 0px;
+    left: -25px;
+  }
+}
+```
+[Back to Top](#home)
+
+---
+
+<a name="rwd-avd-fading"/>
+
+#### Create Visual Direction by Fading an Element from Left to Right
+Using ```opacity``` in a ```@keyframe```` we can emphasis a direction
+```
+  #ball {
+    width: 70px;
+    height: 70px;
+    margin: 50px auto;
+    position: fixed;
+    left: 20%;
+    border-radius: 50%;
+    background: linear-gradient(
+      35deg,
+      #ccffff,
+      #ffcccc
+    );
+    animation-name: fade;
+    animation-duration: 3s;
+  }
+
+  @keyframes fade {
+    50% {
+      left: 60%;
+      opacity: 0.1;
+    }
+  }
+  ```
+[Back to Top](#home)
+
+---
+
+<a name="rwd-avd-infinite"/>
+
+#### Animate Elements Continually Using an Infinite Animation Count
+
+```
+animation-iteration-count: infinite;
+```
+[Back to Top](#home)
+
+---
+
+<a name="rwd-avd-keywords"/>
+
+#### Change Animation Timing with Keywords
+```
+animation-timing-function: ease;
+animation-timing-function: ease-out;
+animation-timing-function: ease-in;
+animation-timing-function: linear;
+
+// cubic-bezier consists of four main points that site on a 1 by 1 grid. p0, p1, p2,p3. p0 and p3 are set, you set p1 and p2's x and y values.
+animation-timing-function: cubic-bezier(0.25, 0.25, 0.75, 0.75);
+```
+[Back to Top](#home)
+
+---
