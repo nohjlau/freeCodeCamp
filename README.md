@@ -77,6 +77,9 @@
 * [Create Visual Direction by Fading an Element from Left to Right](#rwd-avd-fading])
 * [Animate Elements Continually Using an Infinite Animation Count](#rwd-avd-infinite)
 * [Change Animation Timing with Keywords](#rwd-avd-keywords)
+[Applied Accessibility](#rwd-accessibility)
+* [Add A Text Alternative to Images for Visually Impaired Accessiblity](#rwd-alt)
+
 # Responsive Web Design Certification
 
 <a name="basic-html"/>
@@ -1028,6 +1031,20 @@ animation-timing-function: linear;
 
 // cubic-bezier consists of four main points that site on a 1 by 1 grid. p0, p1, p2,p3. p0 and p3 are set, you set p1 and p2's x and y values.
 animation-timing-function: cubic-bezier(0.25, 0.25, 0.75, 0.75);
+```
+[Back to Top](#home)
+
+---
+
+<a name="rwd-accessibility"/>
+
+## Applied Accessibility
+
+<a name="rwd-alt"/>
+
+#### Add a Text Alternative to Images for Visually Impaired Accessibility
+```
+<img src="test.jpg" alt="text picture"/>
 ```
 [Back to Top](#home)
 
