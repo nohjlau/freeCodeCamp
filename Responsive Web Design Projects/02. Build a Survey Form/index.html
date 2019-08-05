@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="main">
+        <div id="survey">
+            <div id="survey-head">
+            <h1 id="title">Advanced Movie Screening</h1>
+            <p id="description">Congratulations! You've been selected to receive an advance moving screening ticket! Please complete the form below and you'll receive your e-tickets over email. Remember to bring your ID when you arrive at the theatre and enjoy the show!</p>
+            </div>
+
+            <div id="survey-body">
+                <form id="survey-form">
+                <fieldset>
+                <h2>Personal Information:</h2>
+                
+                    <label id="name-label">First Name: <input id="name" placeholder="First" required/></label>
+                    <label id="name-label">Last Name: <input id="name" placeholder="Last" required/></label>
+                    <label id="email-label">Email Address: <input id="email" type="email" placeholder="Email" required/></label>
+                    <label id="confirm-email-label">Confirm Email Address: <input id="confirm-email" type="email" placeholder="Confirm Email" required/></label>
+                    <label id="number-label">How old are you?<input id="number" type="number" min="13" max="99" placeholder="Number" required/></label>
+                </fieldset>
+                <fieldset>
+                    <h2> Theater Information</h2>
+                    <label>Select a theater location </label>
+                    <select id="dropdown">
+                        <option value="8">Theatre 8</option>
+                        <option value="11">Theatre 11</option>
+                        <option value="20">Theatre 20</option>
+                    </select>
+                    <fieldset>
+                    <legend>Where do you prefer to sit?</legend>
+                        <label for="front"><input type="radio" value="front" name="seating">Front</label>
+                        <label for="middle"><input type="radio" value="middle" name="seating">Middle</label>
+                        <label for="rear"><input type="radio" value="rear" name="seating"> Rear</label> 
+                    </fieldset>
+                    
+                    <fieldset>
+
+                    <legend>What complementary snacks would you like?</legend>
+                        <label for="popcorn"><input id="popcorn" type="checkbox" value="popcorn" name="snacks">Popcorn</label>
+                        <label for="gummy worms"><input id="gummy-worms" type="checkbox" value="gummy-worms" name="snacks">Gummy Worms</label>
+                        <label for="nerds"><input id="nerds" type="checkbox" value="nerds" name="snacks">Nerds</label>
+                    </fieldset>
+                </fieldset>
+
+                <fieldset>
+                        <h2> Terms and Conditions</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum euismod dignissim turpis sed efficitur. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse ut arcu eu risus vulputate faucibus. Donec ut magna accumsan, euismod erat a, fermentum lacus. Cras rhoncus pretium massa at consectetur. Donec eget vehicula turpis. Vivamus non magna orci. Phasellus consectetur elementum magna in consequat.
+                        </p>
+                </fieldset>
+                
+                <fieldset>
+                    <textarea placeholder="Additional Comments"></textarea>
+                
+                    <button id="submit" name="Submit" type="submit">Submit</button>
+                </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
