@@ -45,6 +45,7 @@ img:hover {
 #tribute-main {
     background-color:rgb(39, 39, 39);
     padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 #tribute-info { 
@@ -74,4 +75,11 @@ blockquote {
     margin: auto;
     color: rgb(39, 39, 39);
     background: rgb(199, 199, 199);
+}
+
+#tribute-link {
+    color: gray;
+    padding-left: 33%;
+    padding-bottom: 25px;
+    font-size: 20px;
 }
