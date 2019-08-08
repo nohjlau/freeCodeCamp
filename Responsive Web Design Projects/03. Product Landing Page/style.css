@@ -1,0 +1,203 @@
+body {
+    display: flex;
+    background-color: black;
+    margin: 0;
+}
+header {
+    position: fixed;
+    height: 100px;
+    width: 80%;
+    background: url(http://www.runescape.com/img/rsp777/grand_exchange/ticker_back.gif);
+    background-repeat: repeat-x;
+    background-position: center center;
+    background-size: 100%;
+    overflow: hidden;
+    box-shadow: 0 0 5px 5px #4a381f;
+    z-index: 10;
+}
+
+@media screen and (max-width: 1200px) {
+    #header {
+        width: 100%;
+    }
+}
+
+header a {
+    text-decoration: none;
+}
+header img {
+    position: relative;
+    float: left;
+    height: 90%;
+    margin-top: 5px;
+    margin-left: 25px;
+    object-fit: scale-down;
+}
+
+header a{
+    font-size: 25px;
+    color:white;
+    position: relative;
+    float: right;
+    margin-top: 15px;
+    padding: 25px;
+}
+
+h2 {
+    color: white;
+}
+#main {
+    margin: 0 auto 0 ;
+    width: 80%;
+    background: url(http://www.runescape.com/img/rsp777/bg2.jpg);
+    background-position: center center;
+    background-repeat: repeat-y;
+    background-size: 100% ;
+    min-height: 100%;
+    font-family: arial;
+}
+
+@media screen and (max-width: 1200px) {
+    #main {
+        width: 100%;
+    }
+}
+
+#section-intro {
+    padding-top: 125px;
+    margin: 35px;
+    text-align: center;
+    align-items: center;
+
+}
+
+#section-intro h1 {
+    color: white;
+    font-size: 50px;
+    margin-bottom: 100px;
+}
+
+#video {
+    max-width: 560px;
+    width: 100%;
+    min-height: 315px;
+    height: auto;
+    padding: 20px;
+}
+
+#section-info {
+    width: 60%;
+    padding: 25px;
+    background-color: rgb(121,97,59);
+    display: flex;
+    justify-content: center;
+    margin: 50px auto;
+    flex-flow: row wrap;
+    color: white;
+    box-shadow: 0 0 3px 3px #4a381f;
+}
+
+#section-info h2 {
+    background-color: rgb(91, 68, 33);
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+}
+#section-product {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    flex-direction: row;
+}
+
+button{
+    padding: 15px;
+    margin-top: 10px;
+    background-color: rgb(121,97,59);
+    color: white;
+    border-style: solid;
+    border-color: rgb(91, 68, 33);;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+button:hover {
+    transition: transform .5s;
+    filter: brightness(1.2);
+    transform: scale(1.2);
+    border-style: groove;
+}
+.card {
+    max-width: 250px;
+    width: 250px;
+    height: auto;
+    justify-content: center;
+    text-align: center;
+    background: url(http://www.runescape.com/img/rsp777/grand_exchange/Scroll-Middle.gif);
+    background-size: auto;
+    margin: 15px 30px 15px 30px;
+    padding: 15px;
+    border-radius: 15px;
+    font-weight: bold;
+    line-height: 25px;
+}
+
+.card h1{
+    font-size: 25px;
+}
+
+.left {
+    background-position: left;
+    border-width: 1px;
+    border-style: solid solid solid hidden;
+}
+
+.center {
+    background-position: center;
+    border-width: 5px;
+    border-style: solid;
+    border-color: yellow;
+}
+
+.card h2 {
+    color: yellow;
+    margin: 5px 0px 15px 0px;
+    padding: 5px 0px 5px 0px;
+    background-color: rgb(121,97,59);
+    box-shadow: 0 0 3px 3px #4a381f;
+}
+.right {
+    background-position: right;
+    border-width: 1px;
+    border-style: solid hidden solid solid;
+}
+
+.card .price{
+    color: white;
+    font-weight: bold;
+    line-height: 15px;
+    font-size: 20px;
+}
+
+.card ul {
+    text-align: left;
+}
+
+#email{
+    padding: 15px;
+    margin-bottom: 50px;
+
+}
+
+#submit { 
+    padding: 15px;
+    margin-top: 10px;
+    background-color: rgb(121,97,59);
+    color: white;
+    border-style: solid;
+    border-color: rgb(91, 68, 33);;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
