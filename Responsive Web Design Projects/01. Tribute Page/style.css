@@ -2,7 +2,6 @@
     font-family: sans-serif;
 }
 #header {
-    /* background-color: #263238; */
     background-color: rgb(39, 39, 39);
     color:rgb(199, 199, 199);
     margin: auto;
@@ -25,7 +24,7 @@ img {
     display: block;
     height: auto;
     margin: auto;
-    border-radius: 500%;
+    border-radius: 50%;
     border-color: #ECEFF1;
     border-width: 10px;
     border-style: solid;
@@ -46,12 +45,14 @@ img:hover {
     background-color:rgb(39, 39, 39);
     padding-top: 30px;
     padding-bottom: 30px;
+    width: 100%;
 }
 
 #tribute-info { 
+    display: table;;
+    margin: auto;
     color: rgb(199, 199, 199);
     padding: 10px 25px 10px 25px;
-    padding-left: 33%;
     line-height: 1.5;
     font-size: 16px;
 }
