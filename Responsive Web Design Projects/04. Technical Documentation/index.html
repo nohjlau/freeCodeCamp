@@ -4,20 +4,131 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Javascript Array Methods</title>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+    <nav id="navbar">
+        <header>JS Array Methods</header>
+        <li>
+            <ul><a class="nav-link" href="#concat">concat</a></ul>
+            <ul><a class="nav-link" href="#constructor">constructor</a></ul>
+            <ul><a class="nav-link" href="#copywithin">copywithin</a></ul>
+            <ul><a class="nav-link" href="#entries">entries</a></ul>
+            <ul><a class="nav-link" href="#every">every</a></ul>
+            <ul><a class="nav-link" href="#fill">fill</a></ul>
+            <ul><a class="nav-link" href="#filter">filter</a></ul>
+            <ul><a class="nav-link" href="#find">find</a></ul>
+            <ul><a class="nav-link" href="#findindex">findindex</a></ul>
+            <ul><a class="nav-link" href="#foreach">foreach</a></ul>
+        </li>
+
+            
+    </nav>
+
     <main id="main-doc">
-        <section class="main-section">
-            <header></header>
+       
+        <section class="main-section" id="concat">
+            <header>concat</header>
+            <p>The <code></code>concat() method is used to join two or more arrays. This method does not change the existing arrays, but returns a new array containt the values of the joined arrays.</p>
+            <code class="block">var fruits = ['apple', 'bananan', 'orange'];
+var vegetables = ['lettuce', 'spinach'];
+var fruitsAndVegetables = fruits + vegetables;</code>
         </section>
-        <section class="main-section">
-            <header></header>
+        <section class="main-section" id="constructor">
+            <header>constructor</header>
+            <p>The constructor property returns the constructor function for an object.</p>
+            <code class="block">var fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.constructor;</code>
+            <li>
+                <ul></ul>
+                <ul></ul>
+                <ul></ul>
+                <ul></ul>
+                <ul></ul>
+            </li>
         </section>
-        <section class="main-section">
-            <header></header>
+        <section class="main-section" id="copywithin">
+            <header>copyWithin</header>
+            <p>The <code>copyWithin()</code> method copies array elements to another position in the array, overwriting the existing values, but will never add more items to an array.</p>
+            <code class="block">var fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.copyWithin(2, 0);
+//var fruits = ["Banana", "Orange", "Banana", "Orange"];</code>
+            <li>
+                <ul></ul>
+                <ul></ul>
+                <ul></ul>
+                <ul></ul>
+                <ul></ul>
+            </li>
         </section>
-        
+        <section class="main-section" id="entries">
+            <header>entries</header>
+            <p>The <code>entries()</code> method returns an Array Iterator object with key/values pairs.</p>
+            <code class="block">var fruits = ["Banana", "Orange", "Apple", "Mango"];
+var f = fruits.entries();
+
+for (x of f) {
+    document.getElementById("demo").innerHTML += x;
+} </code>
+            <li>
+                <ul></ul>
+                <ul></ul>
+                <ul></ul>
+                <ul></ul>
+                <ul></ul>
+            </li>
+        </section>
+        <section class="main-section" id="every">
+            <header>every</header>
+            <p>The <code>every()</code> method checks if all elements in an array pass a test provided as a function) <br>The <code>every()</code> method executes the function once for each element present in the array:</p>
+            <li>
+                <ul>If it finds an array element where the function returns a false value, every() returns false (and does not check the remaining values)</ul>
+                <ul>If no falses occur, every() returns true</ul>
+            </li>
+            This could be useful if you want to check if every element in an array is for example a number.
+            <code class="block">var ages = [32, 33, 16, 40];
+function checkAdult(age) {
+    return age >= 10;
+}
+
+function myFunction() {
+    document.getElementById("demo").innerHTML = ages.every(checkAdult);
+}</code>
+        </section>
+        <section class="main-section" id="fill">
+            <header>fill</header>
+            <p>asdf</p>
+            <code>asdf</code>
+            <li>
+                <ul></ul>
+                <ul></ul>
+                <ul></ul>
+                <ul></ul>
+                <ul></ul>
+            </li>
+        </section>
+        <section class="main-section" id="filter">
+            <header>filter</header>
+            <p>asdf</p>
+            <code>asdf</code>
+        </section>
+        <section class="main-section" id="find">
+            <header>find</header>
+            <p>asdf</p>
+            <code>asdf</code>
+        </section>
+        <section class="main-section" id="findindex">
+            <header>findIndex</header>
+            <p>asdf</p>
+            <code>asdf</code>
+        </section>
+        <section class="main-section" id="foreach">
+            <header>forEach</header>
+            <p>asdf</p>
+            <code>asdf</code>
+        </section>
     </main>
 
 </body>
