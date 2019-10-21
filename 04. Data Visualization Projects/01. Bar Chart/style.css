@@ -1,0 +1,17 @@
+.chart {
+    background-color: lightgray;
+}
+#title { }
+
+#x-axis { }
+#y-axis { }
+.tick { }
+.bar {
+    fill: steelblue;
+    stroke: black;
+    stroke-width: 2px;
+}
+
+.bar:hover {
+    fill:green;
+}
