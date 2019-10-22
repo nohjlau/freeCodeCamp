@@ -10,7 +10,7 @@ var timeScale = d3.scaleTime()
 
 var yS = d3.scaleLinear()
          .range([h, 0]);
-
+         
 var svg = d3.select(".chart")
             .attr("width", w+margin)
             .attr("height", h+margin);
@@ -24,12 +24,12 @@ d3.json(jsonUrl)
   .then(function(data) {
     var xData = [...data["data"]].map(function(d) {
       let date = d[0].split("-");
-      return new Date(date[0], date[1], date[2]);
+      return new Date(date[0], date[1]-1 , date[2]); //FIXME: Magic number because the formatted date displays next month??
     });
     var yData = [...data["data"]].map(d => d[1]);
-    var data = [[...xData], [...yData]];
+
     timeScale.domain([d3.min(xData), d3.max(xData)]);
-    yS.domain([d3.min(yData), d3.max(yData)]);
+    yS.domain([0, d3.max(yData)]);
     
     g.append("g")
          .attr("transform", "translate(0, " + (h) + ")")
@@ -40,35 +40,56 @@ d3.json(jsonUrl)
          .attr("x", w)
          .attr("text-anchor", "end")
          .attr("stroke", "black")
-         .text("X Label");
+         .text("Date");
 
     g.append("g")
-        .call(d3.axisLeft(yS).tickFormat(d => "$" + d).ticks(10))
+        .call(d3.axisLeft(yS).tickFormat(d => d))
         .attr("id", "y-axis")
         .append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", 15)
+        .attr("y", 5)
         .attr("dy", "-5.1em")
         .attr("text-anchor", "end")
         .attr("stroke", "black")
-        .text("Y Label");
+        .text("$ ( bil )");
 
     g.selectAll("bar")
         .data(yData)
         .enter().append("rect")
         .attr("class", "bar")
-        .attr("data-date", (d, i) => xData[i])
+        .attr("data-date", (d, i) => timeFormat(xData[i]))
         .attr("data-gdp", (d) => d)
         .attr("x", (d,i) => timeScale(xData[i]))
         .attr("y", d => yS(d))
         .attr("width", w/xData.length)
-        .attr("height", d => h - yS(d));
+        .attr("height", d => h - yS(d))
+        .on("mouseover", function(d,i) {
+          tooltip.attr("data-date", (d,i) => timeFormat(xData[i])); //FIXME: The code is right, but it's not updating because of my hacky data solution.
+          tooltip.transition()
+                 .duration(200)
+                 .style("opacity", 0.8);
+          tooltip.html("GDP: " + d)
+                    .style("left", d3.event.pageX + 20 + "px")
+                    .style("top", d3.event.pageY + 20 + "px");
+          
+        })
+        .on("mouseout", function(d) {
+          tooltip.transition()
+            .duration(400)
+            .style("opacity", 0)
+        });
   })
       
 svg.append("text")
    .attr("id", "title")
    .attr("transform", "translate(100, 0)")
-   .attr("x", (120))
+   .attr("x", 50)
    .attr("y", 40)
    .attr("font-size", "24px")
-   .text("Example Title");
+   .text("USA GDP Data from (1947-2015)");
+
+   let tooltip = d3.select("body")
+   .append("div")
+   .attr("class", "tooltip")
+   .attr("id", "tooltip")
+   .style("opacity", 0);
