@@ -10,10 +10,10 @@
 {	
     position: absolute;			
     text-align: center;			
-    width: 60px;					
+    width: 100px;					
     height: auto;					
-    padding: 2px;				
-    font: 12px sans-serif;		
+    padding: 20px;				
+    font: 24px sans-serif;		
     background: Green;	
     border: 0px;		
     border-radius: 1px;				

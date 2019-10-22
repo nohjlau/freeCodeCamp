@@ -1,9 +1,9 @@
 let jsonUrl = "https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json";
 // let jsonUrl = "GDP-data.json";
 
-let h = 300;
-let w = 500;
-let margin = 100;
+let h = 600;
+let w = 1000;
+let margin = 200;
 
 var timeScale = d3.scaleTime()
                   .range([0, w]);
@@ -16,7 +16,7 @@ var svg = d3.select(".chart")
             .attr("height", h+margin);
 
 var g = svg.append("g")
-            .attr("transform", "translate(" + 60 + "," + 60 + ")");
+            .attr("transform", "translate(" + 125 + "," + 100 + ")");
 
 var timeFormat = d3.timeFormat('%Y-%m-%d');
 
@@ -34,21 +34,25 @@ d3.json(jsonUrl)
     g.append("g")
          .attr("transform", "translate(0, " + (h) + ")")
          .attr("id", "x-axis")
+         .style("font", "24px times")
          .call(d3.axisBottom(timeScale).tickFormat(d => d3.timeFormat("%Y")(d)).ticks(5))
          .append("text")
-         .attr("y", 30)
+         .attr("y", 75)
          .attr("x", w)
+         .attr("font-size", "24px")
          .attr("text-anchor", "end")
          .attr("stroke", "black")
          .text("Date");
 
     g.append("g")
+        .style("font", "24px times")
         .call(d3.axisLeft(yS).tickFormat(d => d))
         .attr("id", "y-axis")
         .append("text")
         .attr("transform", "rotate(-90)")
         .attr("y", 5)
-        .attr("dy", "-5.1em")
+        .attr("dy", "-4.0em")
+        .attr("font-size", "24px")
         .attr("text-anchor", "end")
         .attr("stroke", "black")
         .text("$ in billions");
@@ -83,9 +87,10 @@ d3.json(jsonUrl)
 svg.append("text")
    .attr("id", "title")
    .attr("transform", "translate(100, 0)")
-   .attr("x", 50)
-   .attr("y", 40)
-   .attr("font-size", "24px")
+   .attr("x", 250)
+   .attr("y", 60)
+   .attr("font-size", "36px")
+   .attr("text-anchor", "center")
    .text("USA GDP Data from (1947-2015)");
 
    let tooltip = d3.select("body")
