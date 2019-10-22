@@ -51,24 +51,24 @@ d3.json(jsonUrl)
         .attr("dy", "-5.1em")
         .attr("text-anchor", "end")
         .attr("stroke", "black")
-        .text("$ ( bil )");
+        .text("$ in billions");
 
     g.selectAll("bar")
-        .data(yData)
+        .data(data["data"])
         .enter().append("rect")
         .attr("class", "bar")
-        .attr("data-date", (d, i) => timeFormat(xData[i]))
-        .attr("data-gdp", (d) => d)
+        .attr("data-date", (d, i) => d[0])
+        .attr("data-gdp", (d) => d[1])
         .attr("x", (d,i) => timeScale(xData[i]))
-        .attr("y", d => yS(d))
+        .attr("y", d => yS(d[1]))
         .attr("width", w/xData.length)
-        .attr("height", d => h - yS(d))
+        .attr("height", d => h - yS(d[1]))
         .on("mouseover", function(d,i) {
-          tooltip.attr("data-date", (d,i) => timeFormat(xData[i])); //FIXME: The code is right, but it's not updating because of my hacky data solution.
+          tooltip.attr("data-date", d[0]);
           tooltip.transition()
                  .duration(200)
                  .style("opacity", 0.8);
-          tooltip.html("GDP: " + d)
+          tooltip.html("GDP: " + d[1])
                     .style("left", d3.event.pageX + 20 + "px")
                     .style("top", d3.event.pageY + 20 + "px");
           
