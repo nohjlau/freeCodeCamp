@@ -1,16 +1,14 @@
-var dataset = [1, 12, 9, 23, 10, 25, 15, 23, 23, 21, 18];
+let jsonUrl = "https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json";
+// let jsonUrl = "GDP-data.json";
 
 let h = 300;
 let w = 500;
 let margin = 100;
 
-var xS = d3.scaleBand()
-         .domain(dataset)
-         .range([0, w])
-         .padding(0.25);
+var timeScale = d3.scaleTime()
+                  .range([0, w]);
 
 var yS = d3.scaleLinear()
-         .domain([0, d3.max(dataset)])
          .range([h, 0]);
 
 var svg = d3.select(".chart")
@@ -20,10 +18,23 @@ var svg = d3.select(".chart")
 var g = svg.append("g")
             .attr("transform", "translate(" + 60 + "," + 60 + ")");
 
-        
-        g.append("g")
+var timeFormat = d3.timeFormat('%Y-%m-%d');
+
+d3.json(jsonUrl)
+  .then(function(data) {
+    var xData = [...data["data"]].map(function(d) {
+      let date = d[0].split("-");
+      return new Date(date[0], date[1], date[2]);
+    });
+    var yData = [...data["data"]].map(d => d[1]);
+    var data = [[...xData], [...yData]];
+    timeScale.domain([d3.min(xData), d3.max(xData)]);
+    yS.domain([d3.min(yData), d3.max(yData)]);
+    
+    g.append("g")
          .attr("transform", "translate(0, " + (h) + ")")
-         .call(d3.axisBottom(xS))
+         .attr("id", "x-axis")
+         .call(d3.axisBottom(timeScale).tickFormat(d => d3.timeFormat("%Y")(d)).ticks(5))
          .append("text")
          .attr("y", 30)
          .attr("x", w)
@@ -31,27 +42,31 @@ var g = svg.append("g")
          .attr("stroke", "black")
          .text("X Label");
 
-        g.append("g")
-         //.attr("transform", "translate(0, 0)")
-         .call(d3.axisLeft(yS).tickFormat(d => "$" + d).ticks(10))
-         .append("text")
-         .attr("transform", "rotate(-90)")
-         .attr("y", 15)
-         .attr("dy", "-5.1em")
-         .attr("text-anchor", "end")
-         .attr("stroke", "black")
-         .text("Y Label");
+    g.append("g")
+        .call(d3.axisLeft(yS).tickFormat(d => "$" + d).ticks(10))
+        .attr("id", "y-axis")
+        .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 15)
+        .attr("dy", "-5.1em")
+        .attr("text-anchor", "end")
+        .attr("stroke", "black")
+        .text("Y Label");
 
-        g.selectAll("bar")
-         .data(dataset)
-         .enter().append("rect")
-         .attr("class", "bar")
-         .attr("x", d => xS(d))
-         .attr("y", d => yS(d))
-         .attr("width", xS.bandwidth())
-         .attr("height", d => h - yS(d));
-  
+    g.selectAll("bar")
+        .data(yData)
+        .enter().append("rect")
+        .attr("class", "bar")
+        .attr("data-date", (d, i) => xData[i])
+        .attr("data-gdp", (d) => d)
+        .attr("x", (d,i) => timeScale(xData[i]))
+        .attr("y", d => yS(d))
+        .attr("width", w/xData.length)
+        .attr("height", d => h - yS(d));
+  })
+      
 svg.append("text")
+   .attr("id", "title")
    .attr("transform", "translate(100, 0)")
    .attr("x", (120))
    .attr("y", 40)

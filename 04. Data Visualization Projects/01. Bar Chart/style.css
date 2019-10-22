@@ -3,13 +3,14 @@
 }
 #title { }
 
-#x-axis { }
-#y-axis { }
-.tick { }
+
+.tick { color: red; }
+#x-axis { color: blue; }
+#y-axis { color: blue; }
+
+
 .bar {
     fill: steelblue;
-    stroke: black;
-    stroke-width: 2px;
 }
 
 .bar:hover {
