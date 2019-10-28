@@ -1,3 +1,7 @@
+// https://www.freecodecamp.org/forum/t/freecodecamp-challenge-guide-roman-numeral-converter/16044
+// My solution is fairly inefficient and when I have the time I'd like to refactor it to be more efficient.
+// The linked URL has a bunch of user posted solutions that take a different approach to my code intensive one.
+
 function convertToRoman(num) {
     var romanChar = "";
     let counter = 1;
