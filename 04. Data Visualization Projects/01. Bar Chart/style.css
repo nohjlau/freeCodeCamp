@@ -1,0 +1,20 @@
+.chart { background-color: lightgray; }
+.tick { color: red; }
+.bar { fill: steelblue; }
+.bar:hover { fill:green; }
+#title { font-weight: bold; }
+#x-axis { color: blue; }
+#y-axis { color: blue; }
+
+.tooltip 
+{	
+    position: absolute;			
+    text-align: center;			
+    width: 100px;					
+    height: auto;					
+    padding: 20px;				
+    font: 24px sans-serif;		
+    background: Green;	
+    border: 0px;		
+    border-radius: 1px;				
+}
