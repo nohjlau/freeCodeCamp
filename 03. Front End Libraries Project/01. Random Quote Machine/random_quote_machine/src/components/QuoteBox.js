@@ -20,9 +20,10 @@ class QuoteBox extends Component {
         return (
             <div id="quote-box" style={styleQuotebox}>
                 <div id="text" style={styleText}>{this.props.quote[rand].text}</div>
-                <div id="author" style={styleAuthor}>{this.props.quote[rand].author}</div>
+                <div id="author" style={styleAuthor}>- {this.props.quote[rand].author}</div>
+                
+                <div className="btn" style={styleTweetButton} ><a id="tweet-quote" href={this.newTweet(rand)}>Tweet this!</a></div>
                 <div id="new-quote" className="btn" onClick={this.newQuote}>New Quote</div>
-                <div id="tweet-quote" className="btn"><a href={this.newTweet(rand)}>Tweet this!</a></div>
             </div>
 
         );
@@ -30,20 +31,35 @@ class QuoteBox extends Component {
 
 }
 
+const styleText = {
+    fontSize: "2rem",
+    padding: "15px",
+    textAlign: 'center'
+}
+
 const styleAuthor = {
+    padding: "10px",
+    fontSize: "1.5rem",
     textAlign: 'right'
 }
 
-const styleText = {
-    textAlign: 'center'
-}
 const styleQuotebox = {
-    width: '50%',
+    width: '60%',
     margin: 'auto',
     padding: '20px',
-    background: 'pink',
+    background: 'white',
+    border: '5px solid teal',
     borderRadius: '15px'
 }
+
+const styleQuoteButton = {
+    float: 'left'
+}
+
+const styleTweetButton = {
+    float: 'right'
+}
+
 QuoteBox.propTypes = {
     quote: PropTypes.array.isRequired
 }

@@ -1,13 +1,8 @@
-/* * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-} */
-
 body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.4;
   margin: 0px;
+  margin-top: 20%;
   padding: 0px;
   background: blue;
 }
@@ -18,14 +13,26 @@ body {
 }
 
 .btn { 
+  margin: 15px;
   display: inline-block;
-  border: none;
+  border: 1px solid green;
   background: green;
   color: #fff;
   padding: 6px 20px;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .btn:hover {
   background: #666;
+  border: 1px solid blue;
+}
+
+.tweet { 
+  height: 50px;
+  width: 50px;
+}
+
+.tweet:hover { 
+  background: red;
 }
