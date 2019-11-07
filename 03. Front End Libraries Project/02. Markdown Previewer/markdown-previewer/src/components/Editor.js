@@ -25,7 +25,7 @@ class Editor extends React.Component {
     };
 }
 
-const defaultValue = '# Big Title \n ## Smaller Title \n [google](https://google.com) \n `inline code` \n ```code block ``` \n * list item \n\n\n > test \n ![GitHub Logo](/images/logo.png) \n **bold**';
+const defaultValue = '# Big Title \n ## Smaller Title \n [google](https://google.com) \n `inline code` \n ```code block \n asdf \n ``` \n * list item \n\n\n > test \n > test \n\n ![FCC Logo](https://www.freecodecamp.org/icons/icon-48x48.png) \n \n **bold**';
 
 const styleTextArea = {
     paddingLeft: '30px',
