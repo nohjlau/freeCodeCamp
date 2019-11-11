@@ -5,7 +5,8 @@ class Calculator extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            "his": []
+            "his": [],
+            "ops_temp": []
         }
     }
     clickBtn = (e) => {
@@ -16,27 +17,25 @@ class Calculator extends React.Component {
             let btn = e.currentTarget.getAttribute("btn");
             let split = display.split(new RegExp(seperators.join('|'), 'g'));
             const HISTORY_MAX = 3;
-
+            
             if(btn === "c") { 
                 // Clear our display
                 document.getElementById("display").innerHTML = "0";
+                this.setState((state) => {
+                    return {"ops_temp": ""}
+                })
             } else if (btn === "b") {
                 // Delete last input char
                 if(display.length > 0 && display[0] !== "0") {
                     document.getElementById("display").innerHTML = display.substring(0, display.length-1);
                 }
             } else if (btn === "=") {
-                // Calculate input
-                if(OPERATIONS.filter(d => d === display[display.length-1]).length > 0) {
-                    // Sanitize if we end with an operation
-                    display = display.substring(0, display.length-1);
-                    if(OPERATIONS.filter(d => d === display[display.length-1]).length > 0) {
-                        //Check we don't have two operators w/ the "-" case
-                        display = display.substring(0, display.length-1);
-                    }
+                while(display[display.length-1].match(/\D/)) {
+                    display = display.substring(0,display.length-1);
                 }
 
-                let entry = {"input": display, "answer": eval(display)};
+                // Calculate input
+                let entry = {"input": display, "answer": Math.round(eval(display)*10000)/10000};
                 let his = [...this.state.his, entry];
                 this.setState((state) => { return {"his": his}});
                 console.log(his);
@@ -48,27 +47,44 @@ class Calculator extends React.Component {
                 // Only one decimal between operations
             } else if (display[0] === "0" && OPERATIONS.filter(d => d === btn).length > 0) { 
                 // No operations before numbers
-            } else if (OPERATIONS.filter(d => d === btn).length > 0 && OPERATIONS.filter(d => d === display[display.length-1]).length > 0) { 
-                // Handle multiple operators
-                if(btn !== "-") {
-                    if(display[display.length-1] === "-") {
-                        document.getElementById("display").innerHTML = display.substring(0, display.length-2) + btn + "-";
-                    } else {
-                        document.getElementById("display").innerHTML = display.substring(0, display.length-1) + btn;
-                    }
-                } else if (display[display.length-1] !== "-") {
-                    document.getElementById("display").innerHTML = display + btn;
-                }
             } else if (display.length === 1 && display[0] === "0" && btn !== ".") {
                 // Replace 0 unless decimal
                 document.getElementById("display").innerHTML = btn;
             } else {
                 document.getElementById("display").innerHTML = display + btn;
             }
+
+            // After it's valid input, check if it's an operation so we can begin the sanitization process
+            display = document.getElementById("display").innerHTML;
+            if(OPERATIONS.filter(d => d === display[display.length-1]).length > 0) {
+                let ops = this.state.ops_temp + btn;
+                console.log(ops);
+                this.setState((state) => { return {"ops_temp": ops}})
+
+            } else if ( btn.match(/\d/)) {
+                this.setState((state) => { return {"ops_temp": ""}});
+            }
+            if(this.state.ops_temp.length > 1 && btn.match(/\d/)) {
+                // if it's not - then substring(0, str.length-ops_temp.length) + this.state.ops_temp.reverse()[0] 
+                // else if reverse is - then add the [0] and [1]
+                let temp = this.state.ops_temp.split("").reverse().join("");
+                if(temp[0] !== "-") {
+                    document.getElementById("display").innerHTML = display.substring(0, display.length-1 - temp.length) + temp[0] + btn;
+                    console.log("true");
+                } else {
+                    if(temp[0] === "-" && temp[1] === "-") {
+                        document.getElementById("display").innerHTML = display.substring(0, display.length-1 - temp.length) + "+" + btn;
+                        console.log("true2");
+                    } else {
+                        document.getElementById("display").innerHTML = display.substring(0, display.length-1 - temp.length) + temp[1] + temp[0] + btn;
+                        console.log("true3");
+                    }
+                }
+                this.setState((state) => { return {"ops_temp": ""}});
+            }
         }
     }
     render() {
-        
         return (
         <div id='calculator'>
             <div id="output">
