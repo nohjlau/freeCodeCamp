@@ -1,0 +1,36 @@
+.entry {
+    width: 30%;
+    border: 1px solid red;
+}
+
+/* VOTING SECTION */
+.rank {
+    float: left;
+    padding: 5px;
+}
+
+.vote {
+ float: left;
+}
+
+
+/* CONTENT SECTION */
+.content {
+    padding: 5px;
+}
+
+.feature {
+    
+}
+
+.title {
+    font-size: 1.2rem;
+}
+
+.tagline {
+
+}
+
+.comments {
+
+}
