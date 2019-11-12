@@ -2,9 +2,9 @@ import React from 'react';
 
 function Timer(props) {
 
-    function timeToTime(minutes) {
+    function timeToTime(seconds) {
         let time = new Date(null);
-        time.setSeconds(minutes*60);
+        time.setSeconds(seconds);
         time = time.toISOString().substr(14,5);
         return time;
     }
@@ -12,7 +12,7 @@ function Timer(props) {
     return (
         <div id="section-timer">
                 <div id="timer-label">Session</div>
-                <div id="time-left">{timeToTime(props.session ? props.length_session : props.length_break)}</div>
+                <div id="time-left">{timeToTime(props.session ? props.timer_session : props.timer_break)}</div>
         </div>
     )
 }
