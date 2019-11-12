@@ -1,0 +1,6 @@
+#section-timer {
+    grid-column: 2;
+    grid-row: 1;
+    padding: 5px;
+    background-color: green;
+}
