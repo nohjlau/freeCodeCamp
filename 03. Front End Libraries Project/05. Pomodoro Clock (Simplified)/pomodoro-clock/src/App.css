@@ -24,3 +24,30 @@
 .App-link {
   color: #09d3ac;
 }
+
+#section-break { 
+  grid-column: 1;
+  grid-row: 2;
+  padding: 5px;
+  background-color: red;
+}
+
+#section-controls {
+  padding: 50px;
+  grid-column: 2;
+  grid-row: 2;
+  background-color: pink;
+  vertical-align: middle;
+}
+#section-session {
+  grid-column: 1;
+  grid-row: 1;
+  background-color: blue;
+  padding: 5px;
+}
+#section-timer {
+  grid-column: 2;
+  grid-row: 1;
+  padding: 5px;
+  background-color: green;
+}

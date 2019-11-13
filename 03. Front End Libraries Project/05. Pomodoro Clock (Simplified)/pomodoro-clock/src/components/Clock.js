@@ -1,9 +1,5 @@
 import React from 'react';
 import './Clock.css';
-import Break from './clock/Break';
-import Controls from './clock/Controls';
-import Session from './clock/Session';
-import Timer from './clock/Timer';
 
 const SECONDS_TO_MINUTES = 60;
 const AUDIO_ID = "beep";
@@ -136,14 +132,46 @@ class Clock extends React.Component {
             "label-timer": DEFAULT["label-timer"],
         });
     }
-    
+
+    timeToTime(secs) {
+        let minutes = Math.floor(secs/60);
+        let seconds = secs % 60;
+        if(minutes < 10) {
+            minutes = "0" + minutes;
+        }
+        if(seconds < 10) {
+            seconds = seconds + "0";
+        }
+        return minutes + ":" + seconds;
+    }
+
     render() {
         return(
             <div id="clock">
-                <Break length_break={this.state.length_break} updateBreak={this.updateBreak} />
-                <Session length_session={this.state.length_session} updateSession={this.updateSession} />
-                <Timer active={this.state.active} session={this.state.session} label_timer={this.state["label-timer"]} timer_session={this.state.timer_session} timer_break={this.state.timer_break}/>
-                <Controls btnStart={this.state.btnStart} controlStart={this.controlStart} controlReset={this.controlReset}/>
+                <div id="section-break">
+                        <div id="break-label">Break Length</div>
+                        <div id="break-length">{this.state.length_break}</div>
+                        <div id="break-increment" value="+" onClick={this.updateBreak}>+</div>
+                        <div id="break-decrement" value="-" onClick={this.updateBreak}>-</div>
+                </div>
+
+                <div id="section-session">
+                    <div id="session-label">Session Length</div>
+                    <div id="session-length">{this.state.length_session}</div>
+                    <div id="session-increment" value="+" onClick={this.updateSession}>+</div>
+                    <div id="session-decrement" value="-" onClick={this.updateSession}>-</div>
+                </div>
+
+                <div id="section-timer">
+                    <span id="timer-label">{this.label_timer}</span>
+                    <div id="time-left">{this.timeToTime(this.state.session ? this.state.timer_session : this.state.timer_break)}</div>
+                    <audio id="beep" src="http://soundbible.com/mp3/A-Tone-His_Self-1266414414.mp3">Sorry, your browser does not support the audio</audio>
+                </div>
+
+                <div id="section-controls">
+                    <span className="btn" id="start_stop" onClick={this.controlStart}>{this.state.btnStart}</span>
+                    <span className="btn" id="reset" onClick={this.controlReset}>Reset</span>
+                </div>
             </div>
         )
     }
