@@ -29,13 +29,8 @@ class Clock extends React.Component {
         if(seconds > 3600) { seconds = 3600;}
         if(seconds < 1) {seconds = 1;}
         var time = new Date(null);
-        var MHSTime = "";
         time.setSeconds(seconds);
-        if(seconds >= 3600) {
-            MHSTime = "00:60:00";
-        } else {
-            MHSTime = time.toISOString().substr(11,8);
-        }
+        var MHSTime = time.toISOString().substr(11,8);
         MHSTime = MHSTime.substr(3, MHSTime.length-1);
         
         return MHSTime;
@@ -113,23 +108,24 @@ class Clock extends React.Component {
         if(DEBUG) {console.log("DEBUG: Hard Reset");}
         this.killInterval(); // ALWAYS reset our timer regardless of the reset type
         this.setState({...DEFAULT});
+        document.getElementById("slider-session").value = DEFAULT.length_session;
+        document.getElementById("slider-break").value = DEFAULT.length_break;
     }
 
     updateSession = (e) => {
         let length = this.state.length_session;
         let btn = e.currentTarget.getAttribute("btn");
 
-        if (btn === "-" && length > 1) {
+        if (btn === "-") {
             length--;
         }
-        if (btn === "+" && length < 60) {
+        if (btn === "+") {
             length++;
         }
-        //double check
         if(length > 60) { length = 60; }
         if(length < 1) { length = 1; }
-
         this.setState({"length_session": length});
+        document.getElementById("slider-session").value = length;
         if(this.state.is_active === false) {
             this.setState({"display_session": length*60});
         }
@@ -140,17 +136,36 @@ class Clock extends React.Component {
         let btn = e.currentTarget.getAttribute("btn");
 
         
-        if (btn === "-" && length > 1) {
+        if (btn === "-") {
             length--;
-        } else if (btn === "+" && length < 60) {
+        } else if (btn === "+") {
             length++;
         }
 
         if(length < 1) { length = 1; }
         if(length > 60) { length = 60; }
         this.setState({"length_break": length});
+        document.getElementById("slider-break").value = length;
         if(this.state.is_active === false) {
             this.setState({"display_break": length*60});
+        }
+    }
+
+    sliderSession = (e) => {
+        this.setState({"length_session": e.currentTarget.getAttribute('value')});
+        let input = document.getElementById("slider-session");
+        this.setState({"length_session": input.value});
+        if(this.state.is_active === false) {
+            this.setState({"display_session": input.value*60});
+        }
+    }
+
+    sliderBreak = (e) => {
+        this.setState({"length_break": e.currentTarget.getAttribute('value')});
+        let input = document.getElementById("slider-break");
+        this.setState({"length_break": input.value});
+        if(this.state.is_active === false) {
+            this.setState({"display_break": input.value*60});
         }
     }
 
@@ -176,6 +191,7 @@ class Clock extends React.Component {
                     <div id="session-length">{this.state.length_session}</div>
                     <div className="slider-box">
                         <span id="session-increment" btn="-" className="element btn left" onClick={this.updateSession}>-</span>
+                        <input id="slider-session" className="element slider" type="range" min="1" max="60" step="1" defaultValue={this.state.length_session} onInput={this.sliderSession}/>
                         <span id="session-decrement" btn="+" className="element btn right" onClick={this.updateSession}>+</span>
                     </div>
                 </div>
@@ -184,6 +200,7 @@ class Clock extends React.Component {
                     <div id="break-length">{this.state.length_break}</div>
                     <div className="slider-box">
                         <span id="break-decrement" btn="-" className="element btn left" onClick={this.updateBreak}>-</span>
+                        <input id="slider-break" className="element slider" type="range" min="1" max="60" defaultValue={this.state.length_break} onInput={this.sliderBreak}/>
                         <span id="break-increment" btn="+" className="element btn right" onClick={this.updateBreak}>+</span>
                     </div>
                 </div>
