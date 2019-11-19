@@ -1,7 +1,7 @@
 # Introduction
 [freeCodeCamp](https://learn.freecodecamp.org/) teaches you the fundamentals and beyond of web development in bite-sized lessons. Here're my projects for each course. Thanks for stopping by!
 
-## Projects Completed (12/30)
+## Projects Completed (14/30)
 
 ### Responsive Web Design Projects (4/5)
 
@@ -24,8 +24,8 @@
 - [X] Build a Random Quote Machine
 - [X] Build a Markdown Previewer
 - [ ] Build a Drum Machine
-- [ ] Build a JavaScript Calculator
-- [ ] Build a Pomodoro Clock
+- [X] Build a JavaScript Calculator
+- [X] Build a Pomodoro Clock
 
 ### Data Visualization Projects (1/5)
 
