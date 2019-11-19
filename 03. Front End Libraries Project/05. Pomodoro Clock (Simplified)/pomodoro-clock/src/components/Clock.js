@@ -1,170 +1,143 @@
 import React from 'react';
 import './Clock.css';
-
-const DEBUG = true;
-const DEFAULT_SESSION = 25;
-const DEFAULT_BREAK = 5;
-const MIN_TO_SEC = 60;
+const AUDIO_ID = "beep";
 
 const DEFAULT = {
-    "length_session": DEFAULT_SESSION,
-    "length_break": DEFAULT_BREAK,
-    "display_session": DEFAULT_SESSION * MIN_TO_SEC,
-    "display_break": DEFAULT_BREAK * MIN_TO_SEC,
-    "display_timer": 1,
-    "is_active": false,
-    "active_session": true,
-    "active_break": false,
+    "break_length": 5,
+    "session_length": 25,
+    "timer": 1500,
+    "active_state": "Session",
+    "active": false,
     "setInterval": null,
-    "string_start": "Start",
-    "string_timer": "Session"
+    "string_start": "Start"
 }
+
 class Clock extends React.Component {
     constructor(props) {
         super(props);
         this.state = {...DEFAULT};
     }
-    
-    displayTime(seconds) {
-        if(seconds > 3600) { seconds = 3600;}
-        if(seconds < 1) {seconds = 1;}
-        var time = new Date(null);
-        var MHSTime = "";
-        time.setSeconds(seconds);
-        if(seconds >= 3600) {
-            MHSTime = "00:60:00";
-        } else {
-            MHSTime = time.toISOString().substr(11,8);
-        }
-        MHSTime = MHSTime.substr(3, MHSTime.length-1);
+
+    switchTimer = (num, str) => {
+        const AUDIO = document.getElementById("beep");
+        AUDIO.play();
+       this.setState({
+           "timer": num,
+           "active_state": str
+       })
+    }
+
+    updateTimer = () => {
+        let timer = this.state.timer - 1;
+        this.setState({
+          "timer": timer
+        })
+
+        if(timer < 0) {
+            if(this.state.active_state === 'Session') {
+                clearInterval(this.state.setInterval);
+                this.startTimer();
+                this.switchTimer(this.state.break_length * 60, 'Break');
         
-        return MHSTime;
+            } else {
+                clearInterval(this.state.setInterval);
+                this.startTimer();
+                this.switchTimer(this.state.session_length * 60, 'Session');
+            }
+                
+        }
+    }
+    
+    startTimer = () => {
+        this.setState({
+            "setInterval": setInterval(this.updateTimer, 1000)
+        })
     }
 
     clickStart = (e) => {
-        let is_active = !this.state.is_active;
-
-        this.setState({"is_active": is_active});
-        if(is_active === true) {
-            if(DEBUG) {console.log("DEBUG: Active")};
-            this.setState({"string_start": "Pause"});
-            this.setState({"setInterval": setInterval(this.logicTimer, 1000)});
-        } else {
-            if(DEBUG) {console.log("DEBUG: Not Active")};
-            this.setState({"string_start": "Start"});
-            this.killInterval();
-        }
-
-    }
-
-    logicTimer = () => {
-        let active_session = this.state.active_session;
-        let active_break = this.state.active_break;
-        let currentTime = 0;
-        let display_session = this.state.display_session;
-        let display_break = this.state.display_break;
-
-        if(display_session === 0 && active_session) { // Switch to break
-            if(DEBUG){console.log("DEBUG: BREAK active")}
-            active_session = false;
-            active_break = true;
-            this.setState({
-                "active_session": active_session,
-                "active_break": active_break,
-                "string_timer": "Break"
-            });
-            document.getElementById("time-left").innerHTML = this.displayTime(this.state.display_break);
-        }
-        
-        if (active_break) {
-            document.getElementById("time-left").innerHTML = this.displayTime(this.state.display_break);
-        }
-        if (display_break === 0 && active_break) { // RESET softly
-            this.softReset();
-        }
-        
-        if(active_session) {
-            currentTime = +this.state.display_session;
-            this.setState({"display_session": currentTime - 1});
-        } else if (active_break) {
-            currentTime = +this.state.display_break;
-            this.setState({"display_break": currentTime - 1});
-        }
-        
-    }
-
-    softReset = () => {
-        this.killInterval();
-        let display_session = this.state.length_session * 60;
-        let display_break = this.state.length_break * 60;
-        if(DEBUG) {console.log("DEBUG: Soft Reset");}
+        let active = !this.state.active;
         this.setState({
-            "display_session": display_session,
-            "display_break": display_break,
-            "active_session": true,
-            "active_break": false,
-            "setInterval": setInterval(this.logicTimer, 1000),
-            "string_timer": "Session",
-        });
-        document.getElementById("time-left").innerHTML = this.displayTime(this.state.display_session);
+            "active": active,
+            "string_start": active ? "Pause" : "Start",
+            "setInterval": active ? setInterval(this.updateTimer, 1000) : clearInterval(this.state.setInterval)
+        })
     }
 
-    clickReset = (e) => {
-        if(DEBUG) {console.log("DEBUG: Hard Reset");}
-        this.killInterval(); // ALWAYS reset our timer regardless of the reset type
-        this.setState({...DEFAULT});
+    clickReset = () => {
+        const AUDIO = document.getElementById(AUDIO_ID);
+        AUDIO.pause();
+        AUDIO.currentTime = 0;
+        this.killTimer();
+        this.setState({
+            "break_length": DEFAULT.break_length,
+            "session_length": DEFAULT.session_length,
+            "timer": 1500,
+            "active_state": "Session",
+            "active": false,
+            "setInterval": null,
+            "string_start": "Start"
+        })
     }
 
     updateSession = (e) => {
-        let length = this.state.length_session;
-        let btn = e.currentTarget.getAttribute("btn");
+        let length = this.state.session_length;
+        let active_state = this.state.active_state;
+        let active = this.state.active;
 
-        if (btn === "-" && length > 1) {
-            length--;
-        }
-        if (btn === "+" && length < 60) {
-            length++;
-        }
-        //double check
-        if(length > 60) { length = 60; }
-        if(length < 1) { length = 1; }
-
-        this.setState({"length_session": length});
-        if(this.state.is_active === false) {
-            this.setState({"display_session": length*60});
+        if(active === true) return;
+        if(e.currentTarget.getAttribute("btn") === "+" && length != 60) { // increment
+            length += 1;
+        } else if(e.currentTarget.getAttribute("btn") === "-" && length != 1) { // decrement
+            length -= 1;
+        }    
+        this.setState({"session_length": length});
+        if(active_state === "Session") {
+            this.setState({"timer": length * 60});    
         }
     }
 
     updateBreak = (e) => {
-        let length = this.state.length_break;
-        let btn = e.currentTarget.getAttribute("btn");
+        let length = this.state.break_length;
+        let active_state = this.state.active_state;
+        let active = this.state.active;
 
-        
-        if (btn === "-" && length > 1) {
-            length--;
-        } else if (btn === "+" && length < 60) {
-            length++;
-        }
-
-        if(length < 1) { length = 1; }
-        if(length > 60) { length = 60; }
-        this.setState({"length_break": length});
-        if(this.state.is_active === false) {
-            this.setState({"display_break": length*60});
+        if(active === true) return;
+        if(e.currentTarget.getAttribute("btn") === "+" && length != 60) { // increment
+            length += 1;
+        } else if(e.currentTarget.getAttribute("btn") === "-" && length != 1) { // decrement
+            length -= 1;
+        }        
+        this.setState({"break_length": length})
+        if(active_state === "Break") {
+            this.setState({"timer": length * 60})
         }
     }
 
-    killInterval = () => {
+    killTimer() {
         clearInterval(this.state.setInterval);
-        this.setState({"setInterval": null})
+    }
+
+    displayTime(secs) {
+        let minutes = Math.floor(secs/60);
+        let seconds = secs % 60;
+        if(minutes < 10) {
+            minutes = "0" + minutes;
+        }
+        if(seconds < 10) {
+            seconds = "0" + seconds;
+        } else {
+            
+        }
+        return minutes + ":" + seconds;
     }
 
     render() {
         return(
             <div id="calculator">
                 <div id="section-timer">
-                    <div id="timer-label" className="header">{this.state.string_timer}</div>
-                    <div id="time-left">{this.displayTime(this.state.display_session)}</div>
+                    <div id="timer-label" className="header">{this.state.active_state}</div>
+                    <div id="time-left">{this.displayTime(this.state.timer)}</div>
+                    <audio id="beep" src="http://soundbible.com/mp3/A-Tone-His_Self-1266414414.mp3">Sorry, your browser does not support the audio</audio>
                 </div>
 
                 <div id="section-controls">
@@ -173,15 +146,15 @@ class Clock extends React.Component {
                 </div>
                 <div id="section-session" className="section">
                     <div className="header" id="session-label">Session Length</div>
-                    <div id="session-length">{this.state.length_session}</div>
+                    <div id="session-length">{this.state.session_length}</div>
                     <div className="slider-box">
-                        <span id="session-increment" btn="-" className="element btn left" onClick={this.updateSession}>-</span>
-                        <span id="session-decrement" btn="+" className="element btn right" onClick={this.updateSession}>+</span>
+                        <span id="session-decrement" btn="-" className="element btn left" onClick={this.updateSession}>-</span>
+                        <span id="session-increment" btn="+" className="element btn right" onClick={this.updateSession}>+</span>
                     </div>
                 </div>
                 <div id="section-break" className="section">
                     <div className="header" id="break-label">Break Length</div>
-                    <div id="break-length">{this.state.length_break}</div>
+                    <div id="break-length">{this.state.break_length}</div>
                     <div className="slider-box">
                         <span id="break-decrement" btn="-" className="element btn left" onClick={this.updateBreak}>-</span>
                         <span id="break-increment" btn="+" className="element btn right" onClick={this.updateBreak}>+</span>
