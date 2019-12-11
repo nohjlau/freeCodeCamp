@@ -18,12 +18,23 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-
-// your first API endpoint... 
-app.get("/api/hello", function (req, res) {
-  res.json({greeting: 'hello API'});
+// Completed Timestamp Microservice
+app.get("/api/timestamp/:date_string?", function (req, res) {
+  let date_string = req.params.date_string;
+  if(!date_string) { 
+    res.json({"unix": new Date().getTime(), "utc":new Date().toUTCString()});
+  } else {
+    let date = new Date(req.params.date_string);
+    if(/\d{5,}/.test(date_string)) { // Trick is 5 or more digits means unix timestamp. 4 could be year.
+      date = parseInt(date_string);
+      res.json({"unix": date, "utc": new Date(date).toUTCString()});
+    } else 
+    if(!Date.parse(date)) { res.json({"error": "Invalid Date"})
+    } else {
+        res.json({"unix": date.getTime(), "utc": date.toUTCString()});
+    }
+  }
 });
-
 
 
 // listen for requests :)
