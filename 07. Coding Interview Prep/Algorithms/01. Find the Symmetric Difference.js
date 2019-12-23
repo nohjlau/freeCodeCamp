@@ -1,5 +1,19 @@
-// This works, but the prompt wants us to allow for unlimited inputs--basically using arguments
-function sym(a, b) {
+function sym() {
+    if(arguments.length == 1) { // Base Case
+        return arguments[0];
+    }
+    
+    let c = findSymDiff(arguments[0], arguments[1]);
+    if(arguments.length >= 3) {
+        for(let i = 2; i < arguments.length; i++) {
+            c = findSymDiff(c, arguments[i]);
+        }
+    }
+
+    return c;
+}
+
+function findSymDiff(a, b) {
     let finalArray = [];
     a.map(d => {
         if(b.indexOf(d) == -1) {
@@ -19,5 +33,6 @@ function sym(a, b) {
 
 a = [1,2,3];
 b = [2,3,4];
+c = [4,5,6];
 
-console.log(sym([1, 2, 3], [5, 2, 1, 4]));
+console.log(sym([1, 2, 3, 3], [5, 2, 1, 4]));
