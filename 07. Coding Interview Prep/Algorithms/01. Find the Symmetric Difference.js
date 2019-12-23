@@ -9,8 +9,12 @@ function sym() {
             c = findSymDiff(c, arguments[i]);
         }
     }
-
-    return c;
+    let finalArr = [];
+    // Remove duplicates
+    c.map(d => {
+        if (finalArr.indexOf(d) == -1) { finalArr.push(d)}
+    });
+    return finalArr;
 }
 
 function findSymDiff(a, b) {
