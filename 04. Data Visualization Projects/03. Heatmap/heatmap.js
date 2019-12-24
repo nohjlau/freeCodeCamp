@@ -39,4 +39,6 @@ d3.json(jsonURL).then(function(d) {
         .attr("id", "y-axis")
         .style("font", "20px times")
         .call(d3.axisLeft(scaleY));
+
+
 });

@@ -1,22 +1,12 @@
 function sym() {
-    if(arguments.length == 1) { // Base Case
-        return arguments[0];
-    }
-    
-    let c = findSymDiff(arguments[0], arguments[1]);
-    if(arguments.length >= 3) {
-        for(let i = 2; i < arguments.length; i++) {
-            c = findSymDiff(c, arguments[i]);
-        }
-    }
-    
-    return c;
+    let args = Array.prototype.slice.call(arguments);
+    return args.reduce(findSymDiff);
 }
 
 function findSymDiff(a, b) {
     let finalArray = [];
     a.map(d => {
-        if(b.indexOf(d) == -1 && finalArray.indexOf(d) == -1) { // Check for symdif & not a dup
+        if(b.indexOf(d) == -1 && finalArray.indexOf(d) == -1) { // Check for symdif & not a dup)
             finalArray.push(d);
         }
     });
