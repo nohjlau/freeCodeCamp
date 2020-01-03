@@ -1,7 +1,7 @@
 # Introduction
 [freeCodeCamp](https://learn.freecodecamp.org/) teaches you the fundamentals and beyond of web development in bite-sized lessons. Here're my projects for each course. Thanks for stopping by!
 
-## Projects Completed (15/30)
+## Projects Completed (17/30)
 
 ### Responsive Web Design Projects (4/5)
 
@@ -38,8 +38,8 @@
 ### APIs and Microservices Projects (1/5)
 
 - [X] Timestamp Microservice
-- [ ] Request Header Parser Microservice
-- [ ] URL Shortener Microservice
+- [X] Request Header Parser Microservice
+- [X] URL Shortener Microservice
 - [ ] Exercise Tracker
 - [ ] File Metadata Microservice
 
