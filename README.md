@@ -1,15 +1,15 @@
 # Introduction
 [freeCodeCamp](https://learn.freecodecamp.org/) teaches you the fundamentals and beyond of web development in bite-sized lessons. Here're my projects for each course. Thanks for stopping by!
 
-## Projects Completed (17/30)
+## Projects Completed (21/30)
 
-### Responsive Web Design Projects (4/5)
+### Responsive Web Design Projects (5/5)
 
 - [X] Build a Tribute Page
 - [X] Build a Survey Form
 - [X] Build a Product Landing Page
 - [X] Build a Technical Documentation Page
-- [ ] Build a Personal Portfolio Webpage 
+- [X] Build a Personal Portfolio Webpage 
 
 ### JavaScript Projects (5/5)
 
@@ -19,7 +19,7 @@
 - [X] Telephone Number Validator
 - [X] Cash Register
 
-### Front End Libraries Projects (2/5)
+### Front End Libraries Projects (4/5)
 
 - [X] Build a Random Quote Machine
 - [X] Build a Markdown Previewer
@@ -35,17 +35,17 @@
 - [ ] Visualize Data with a Choropleth Map
 - [ ] Visualize Data with a Treemap Diagram
 
-### APIs and Microservices Projects (1/5)
+### APIs and Microservices Projects (5/5)
 
 - [X] Timestamp Microservice
 - [X] Request Header Parser Microservice
 - [X] URL Shortener Microservice
-- [ ] Exercise Tracker
-- [ ] File Metadata Microservice
+- [X] Exercise Tracker
+- [X] File Metadata Microservice
 
-### Information Security and Quality Assurance Projects (0/5)
+### Information Security and Quality Assurance Projects (1/5)
 
-- [ ] Metric-Imperial Converter
+- [X] Metric-Imperial Converter
 - [ ] Issue Tracker
 - [ ] Personal Library
 - [ ] Stock Price Checker
