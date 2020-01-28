@@ -45,7 +45,7 @@
 
 ### Information Security and Quality Assurance Projects (1/5)
 
-- [X] Metric-Imperial Converter
+- [ ] Metric-Imperial Converter
 - [ ] Issue Tracker
 - [ ] Personal Library
 - [ ] Stock Price Checker
