@@ -1,24 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Johnny's Portfolio</title>
+    <link rel='stylesheet' type='text/css' href='style.css'>
 </head>
 <body>
-    <div id="navbar"><a href="#projects">Goto Projects</a></div>
-    <div id="welcome-section">
-        <h1>welcome to my page</h1>
+    <div id='navbar'><a href='#projects'>Goto Projects</a></div>
+    <div id='welcome-section'>
+        <h1>How's it going? I'm Johnny</h1>
     </div>
-    <div id="projects">
+    <div id='projects'>
         Some of my projects
-        <div class="project-title"><a href="#">My Showcase Project</a></div>
+        <div id='projects-container'>
+            <div class='row'>
+
+                <div class='column'>
+                    <div class='project-tile'>One</div>
+                </div>
+
+                <div class='column'>
+                    <div class='project-tile'>Two</div>
+                </div>
+                
+                <div class='column'>
+                    <div class='project-tile'>Three</div>
+                </div>
+            </div>
+
+            <div class='row'>
+                
+                <div class='column'>
+                    <div class='project-tile'>Four</div>
+                </div>
+
+                <div class='column'>
+                    <div class='project-tile'>Five</div>
+                </div>
+
+                <div class='column'>
+                    <div class='project-tile'>Six</div>
+                </div>
+            </div>
     </div>
-    <div id="contact">
-        <a href id="profile-link">GitHUb</a>
-        <a href id="fcc-link">FCC</a>
-        <a href id="twitter">Twitter</a>
+    <div id='contact'>
+        <a id='profile-link' target="_blank" href="http://www.google.com">GitHub</a>
+        <a href id='fcc-link'>FCC</a>
+        <a href id='twitter'>Twitter</a>
     </div>
+    <script src='script.js'></script>
 </body>
 </html>

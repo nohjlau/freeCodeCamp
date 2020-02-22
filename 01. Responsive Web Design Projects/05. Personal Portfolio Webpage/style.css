@@ -1,0 +1,57 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+#welcome-section {
+    background-color: red;
+    height: 100vh;
+}
+
+#welcome-section h1 {
+    text-align: center;
+}
+#projects { 
+    background-color: blue;
+    padding: 10px 10px 10px 10px;
+}
+
+#projects-container {
+    margin: 15px;
+    padding: 1px;
+    background-color: pink;
+}
+
+.project-tile {
+    padding: 15px 10px 15px 10px;
+    margin: 10px 10px 10px 10px;
+    background-color: green;
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+}
+
+#navbar {
+    background-color: orange;
+    width: 100%;
+    position: fixed;
+    height: 50px;
+    overflow: auto;
+}
+
+/* Mobile */
+@media only screen and (min-width: 800px) {
+    .column {
+        flex: 1;
+    }
+}
